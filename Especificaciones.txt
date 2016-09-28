@@ -9,7 +9,9 @@ para 0 hasta ntrabajos-1 leer lo siguiente
 	para 0 hasta noperaciones-1 leer lo siguiente:
 		leer id de operaciones o[i]
 		tiempo para realizar operaciones o[i]
-		dependencias de o[i] (operaciones que se deben de completar antes de comenzar o[i], ingresar n si o[i] no tiene dependencias)
+		leer cantidad de dependencias ndependencias
+		para 0 hasta ndependencias-1 leer lo siguiente
+			dependencia d[i] de o[i] (operaciones que se deben de completar antes de comenzar o[i])
 		maquina m[i] donde se debe realizar operaciones o[i]
 Ejemplo:
 3
@@ -21,9 +23,10 @@ j1
 2
 t1
 1
-n
+0
 m2
 t2
 2
+1
 t1
 m1
