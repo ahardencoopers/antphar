@@ -8,8 +8,11 @@ Nombre identificador de la operacion
 int tiempo
 Tiempo restante para terminar la operacion
 
-operacion dependencias[]
-Arreglo de operaciones indicando las dependencias de la operacion
+int dependencia
+Entero indicando las dependencias restantes antes de poder ejecutar la operacion. Una
+operacion se puede ejecutar si y solo si su grado de dependencia es 0. Cada vez
+que se termina una operacion de un tarea, se resta 1 a todas las operaciones de la
+misma tarea.
 
 maquina maquina
 Maquina donde se debe realizar la operacion"""
