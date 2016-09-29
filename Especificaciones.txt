@@ -1,7 +1,5 @@
 Especifacion de archivo de texto con datos de maquinas, operaciones y trabajos:
-primera linea del archivo contiene cantidad de maquinas nmaquinas
-para 0 hasta nmaquinas-1 leer lo siguiente:
-	id de maquina m[i]
+primera linea contiene id de maquinas separado por comas
 despues de leer maquinas, la siguiente linea tendra la cantidad de trabajos ntrabajos
 para 0 hasta ntrabajos-1 leer lo siguiente
 	id del trabajo j[i]
@@ -9,16 +7,11 @@ para 0 hasta ntrabajos-1 leer lo siguiente
 	para 0 hasta noperaciones-1 leer lo siguiente:
 		leer id de operaciones o[i]
 		tiempo para realizar operaciones o[i]
-		leer cantidad de dependencias ndependencias
-		para 0 hasta ndependencias-1 leer lo siguiente
-			dependencia d[i] de o[i] (operaciones que se deben de completar antes de comenzar o[i])
+		leer grado de dependencia
 		maquina m[i] donde se debe realizar operaciones o[i]
 Ejemplo:
+m1,m2,m3
 3
-m1
-m2
-m3
-2
 j1
 2
 t1
