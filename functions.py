@@ -5,6 +5,7 @@ from vecino import *
 import sys
 import copy
 import random
+import pdb;
 
 """
 Funcion leermaquinas y leertrabajos se deben llamar secuencialmente.
@@ -108,7 +109,7 @@ def getmakespan(idmaquinas, maquinas):
 				operacion = maquina.operaciones[0]
 				if operacion.dependencia == 0:
 					operacion.tiempo = operacion.tiempo - 1
-					if operacion.tiempo == 0:
+					if operacion.tiempo <= 0:
 						idtrabajo = operacion.idtrabajo
 						decreasedep(idmaquinas, maquinas, idtrabajo)
 						maquina.operaciones.pop(0)
@@ -168,4 +169,4 @@ def printmaqop(idmaquinas, maquinas):
 
 def printmakevecs(vecinos):
 	for i in range(0, len(vecinos)):
-		print vecinos[i].makespan	
+		print vecinos[i].makespan
