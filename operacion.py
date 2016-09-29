@@ -2,6 +2,9 @@
 representacion de las operaciones de una tarea
 utilizar solo con los siguientes atributos
 
+string idtrabajo
+Identificador del trabajo al que pertenece la operacion
+
 string id
 Nombre identificador de la operacion
 
