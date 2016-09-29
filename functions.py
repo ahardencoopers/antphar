@@ -98,7 +98,6 @@ def decreasedep(idmaquinas, maquinas, idtrabajo):
 	return
 
 def getmakespan(idmaquinas, maquinas):
-	pdb.set_trace()
 	makespan = 0
 	cantops = opsleft(idmaquinas, maquinas)
 	while cantops > 0:
@@ -109,7 +108,7 @@ def getmakespan(idmaquinas, maquinas):
 				operacion = maquina.operaciones[0]
 				if operacion.dependencia == 0:
 					operacion.tiempo = operacion.tiempo - 1
-					if operacion.tiempo == 0:
+					if operacion.tiempo <= 0:
 						idtrabajo = operacion.idtrabajo
 						decreasedep(idmaquinas, maquinas, idtrabajo)
 						maquina.operaciones.pop(0)
