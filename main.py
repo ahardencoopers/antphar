@@ -6,6 +6,7 @@ from functions import *
 import sys
 import copy
 import random
+import pdb
 
 maquinas = {}
 trabajos = {}
@@ -23,6 +24,4 @@ cargarmaquina(idtrabajos, trabajos, maquinas)
 #Aplicar heuristica greedy para orden de operaciones en cada maquina
 depgreedy(idmaquinas, maquinas)
 
-getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
-
-printmakevecs(vecinos)
+getvecinos(1, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
