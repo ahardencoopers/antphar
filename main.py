@@ -11,7 +11,6 @@ import pdb
 maquinas = {}
 maquinasorden = {}
 trabajos = {}
-#Arreglo de keys para iterar hashes de trabajos y maquinas
 idtrabajos = []
 idmaquinas = []
 vecinos = []
@@ -24,7 +23,19 @@ cargarmaquina(idtrabajos, trabajos, maquinas)
 
 #Buscar minimo local
 depgreedy(idmaquinas, maquinas)
-maquinasorden = copy.deepcopy(maquinas)
+maquinascopy = copy.deepcopy(maquinas)
 minmakespan = getmakespan(idmaquinas, maquinas)
 
-getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinasorden, trabajos)
+getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinascopy, trabajos)
+
+for i in range(0, 100):
+	for j in range(0, len(vecinos)):		
+		if vecinos[j].makespan < minmakespan:
+			print "encontre min"
+			minmakespan = vecinos[j].makespan
+			minvecino = vecinos[j]
+			maquinas = copy.deepcopy(minvecino.maqorden)
+	vecinos = []
+	getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
+
+print minmakespan
