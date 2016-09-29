@@ -93,6 +93,27 @@ def decreasedep(idmaquinas, maquinas, idtrabajo):
 				operacion.dependencia = operacion.dependencia - 1
 	return
 
+def getmakespan(idmaquinas, maquinas):
+	makespan = 0
+	cantops = opsleft(idmaquinas, maquinas)
+	while cantops > 0:
+		for i in range(0, len(idmaquinas)):
+			keymaquina = idmaquinas[i]
+			maquina = maquinas[keymaquina]
+			if len(maquina.operaciones) > 0:
+				operacion = maquina.operaciones[0]
+				if operacion.dependencia == 0:
+					operacion.tiempo = operacion.tiempo - 1
+					if operacion.tiempo == 0:
+						idtrabajo = operacion.idtrabajo
+						decreasedep(idmaquinas, maquinas, idtrabajo)
+						maquina.operaciones.pop(0)
+						cantops = cantops - 1
+						if len(maquina.operaciones) > 0:
+							depgreedyone(maquina)
+		makespan = makespan + 1
+	return makespan
+
 def printmaquinas(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
 		print maquinas[idmaquinas[i]].id
