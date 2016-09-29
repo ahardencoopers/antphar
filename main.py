@@ -5,7 +5,8 @@ import sys
 
 ntrabajos = 0
 maquinas = {}
-trabajos = []
+trabajos = {}
+idtrabajos = []
 idmaquinas = raw_input()
 idmaquinas = idmaquinas.split(",") 
 
@@ -28,17 +29,15 @@ for i in range(0, ntrabajos):
 		operacion.dependencia = int(raw_input())
 		operacion.maquina = raw_input()
 		trabajo.operaciones.append(operacion)
-	trabajos.append(trabajo)
+	trabajos[trabajo.id] = trabajo
+	idtrabajos.append(trabajo.id)
 
 for i in range(0, len(idmaquinas)):
 	print maquinas[idmaquinas[i]].id
 	print maquinas[idmaquinas[i]].operaciones
 
-for i in range(0, len(trabajos)):
-	print trabajos[i].id
-	for j in range(0, len(trabajos[i].operaciones)):
-		print trabajos[i].operaciones[j].id
-		print trabajos[i].operaciones[j].tiempo
-		print trabajos[i].operaciones[j].dependencia
-		print trabajos[i].operaciones[j].maquina
+for i in range(0, len(idtrabajos)):
+	print trabajos[idtrabajos[i]].id
+	for j in range(0, len(trabajos[idtrabajos[i]].operaciones)):
+		print trabajos[idtrabajos[i]].operaciones[j].id + " " + str(trabajos[idtrabajos[i]].operaciones[j].tiempo) + " " + str(trabajos[idtrabajos[i]].operaciones[j].dependencia) + " " + str(trabajos[idtrabajos[i]].operaciones[j].maquina)
 
