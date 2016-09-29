@@ -131,6 +131,9 @@ def getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 		depgreedy(vecino.idmaquinas, vecino.maquinas)
 		vecino.maqorden = copy.deepcopy(maquinas)
 		vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
+		print "vecino " + str(i)
+		printmaqop(vecino.idmaquinas, vecino.maqorden)
+		print "makespan " + str(vecino.makespan)
 		vecinos.append(vecino)
 
 def printmaquinas(idmaquinas, maquinas):
