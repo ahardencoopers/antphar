@@ -6,27 +6,23 @@ from functions import *
 import sys
 import copy
 import random
+import pdb
 
 print "nombre caso"
-print "maxmaquinas"
-print "maxtrabajos"
+print "nmaquinas"
+print "ntrabajos"
 print "maxoperaciones"
 print "maxmtiempo"
 
-
 archivocaso = open(raw_input(), 'w')
 
-
-maxmaquinas = int(raw_input())
-maxtrabajos = int(raw_input())
+nmaquinas = int(raw_input())
+ntrabajos = int(raw_input())
 maxoperaciones = int(raw_input())
 maxtiempo = int(raw_input())
 
-nmaquinas = random.randrange(1, maxmaquinas + 1)
-ntrabajos = random.randrange(1, maxtrabajos + 1)
-
-idmaquinas = "m1"
-for i in range(2, nmaquinas):
+idmaquinas = "m0"
+for i in range(1, nmaquinas):
 	idmaquina = "m"+str(i)
 	idmaquinas = idmaquinas + "," + idmaquina
 
@@ -37,13 +33,13 @@ idmaquinas = idmaquinas + "\n"
 archivocaso.write(idmaquinas)
 archivocaso.write(str(ntrabajos) + "\n")
 
-for i in range(ntrabajos):
+for i in range(0, ntrabajos):
 	idtrabajo = "j"+str(i)
 	archivocaso.write(idtrabajo + "\n")
 	noperaciones = random.randrange(1, maxoperaciones+1)
 	archivocaso.write(str(noperaciones) + "\n")
-	for j in range(noperaciones):
-		idoperacion = "0" + str(i) + str(j) + "\n"
+	for j in range(0, noperaciones):
+		idoperacion = "O" + str(i) + str(j) + "\n"
 		archivocaso.write(idoperacion)
 		tiempo = str(random.randrange(0, maxtiempo + 1)) + "\n"
 		archivocaso.write(tiempo)
