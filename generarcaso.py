@@ -26,7 +26,7 @@ nmaquinas = random.randrange(1, maxmaquinas+1)
 ntrabajos = random.randrange(1, maxtrabajos+1)
 
 idmaquinas = "m1"
-for i in range(0, nmaquinas):
+for i in range(2, nmaquinas):
 	idmaquina = "m"+str(i)
 	idmaquinas = idmaquinas + "," + idmaquina
 

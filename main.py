@@ -20,10 +20,9 @@ leertrabajos(idtrabajos, trabajos)
 #Cargar operaciones de cada trabajo en maquinas correspondiente
 cargarmaquina(idtrabajos, trabajos, maquinas)
 
-printmaqop(idmaquinas, maquinas)
-
 #Aplicar heuristica greedy para orden de operaciones en cada maquina
 depgreedy(idmaquinas, maquinas)
 
-print getmakespan(idmaquinas, maquinas)
+getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 
+printmakevecs(vecinos)

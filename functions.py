@@ -128,7 +128,20 @@ def getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 			keymaquina = idmaquinas[j]
 			random.shuffle(vecino.maquinas[keymaquina].operaciones)
 		depgreedy(vecino.idmaquinas, vecino.maquinas)
-		#vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
+		vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
+		vecinos.append(vecino)
+
+def getvecinosnomake(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos):
+	for i in range(0, cantvecinos):
+		vecino = Vecino()
+		vecino.maquinas = copy.deepcopy(maquinas)
+		vecino.trabajos = copy.deepcopy(trabajos)
+		vecino.idtrabajos = copy.deepcopy(idtrabajos)
+		vecino.idmaquinas = copy.deepcopy(idmaquinas)
+		for j in range(0, len(idmaquinas)):
+			keymaquina = idmaquinas[j]
+			random.shuffle(vecino.maquinas[keymaquina].operaciones)
+		depgreedy(vecino.idmaquinas, vecino.maquinas)
 		vecinos.append(vecino)
 
 def printmaquinas(idmaquinas, maquinas):
