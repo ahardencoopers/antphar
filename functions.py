@@ -102,19 +102,27 @@ def getmakespan(idmaquinas, maquinas):
 	cantops = opsleft(idmaquinas, maquinas)
 	while cantops > 0:
 		for i in range(0, len(idmaquinas)):
+			continues = True
 			keymaquina = idmaquinas[i]
 			maquina = maquinas[keymaquina]
-			if len(maquina.operaciones) > 0:
-				operacion = maquina.operaciones[0]
-				if operacion.dependencia == 0:
-					operacion.tiempo = operacion.tiempo - 1
-					if operacion.tiempo <= 0:
-						idtrabajo = operacion.idtrabajo
-						decreasedep(idmaquinas, maquinas, idtrabajo)
-						maquina.operaciones.pop(0)
-						cantops = cantops - 1
-						if len(maquina.operaciones) > 0:
-							depgreedyone(maquina)
+			while continues:
+				if len(maquina.operaciones) > 0:
+					operacion = maquina.operaciones[0]
+					if operacion.dependencia == 0:
+						if operacion.tiempo > 0:
+							operacion.tiempo = operacion.tiempo - 1
+							continues = False
+						if operacion.tiempo == 0:
+							idtrabajo = operacion.idtrabajo
+							decreasedep(idmaquinas, maquinas, idtrabajo)
+							maquina.operaciones.pop(0)
+							cantops = cantops - 1
+							if len(maquina.operaciones) > 0:
+								depgreedyone(maquina)
+					else:
+						continues = False
+				else:
+					continues = False
 		makespan = makespan + 1
 	return makespan
 
