@@ -45,7 +45,6 @@ for i in range(0, ntrabajos):
 		archivocaso.write(tiempo)
 		dependencia = str(j) + "\n"
 		archivocaso.write(dependencia)
-		maqrand = random.randrange(0, nmaquinas-1)
-		print "maqrand " + str(maqrand)
+		maqrand = random.randrange(0, nmaquinas)
 		maquina = maquinas[maqrand] + "\n"
 		archivocaso.write(maquina)
