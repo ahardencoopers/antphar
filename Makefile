@@ -1,8 +1,5 @@
 main: main.py
-	python main.py < casosalon.txt
-	rm *pyc
-casorand: main.py
-	python main.py < casorand.txt
+	python main.py < casorand
 	rm *pyc
 generar: generarcaso.py
 	python generarcaso.py

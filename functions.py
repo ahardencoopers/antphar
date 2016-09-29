@@ -62,7 +62,7 @@ def cargarmaquina(idtrabajos, trabajos, maquinas):
 def depgreedy(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
 		keymaquina = idmaquinas[i]
-		if maquinas[keymaquina].operaciones[0].dependencia > 0:
+		if len(maquinas[keymaquina].operaciones) > 0 and maquinas[keymaquina].operaciones[0].dependencia > 0:
 			minpos = mindep(maquinas[keymaquina])
 			minop = maquinas[keymaquina].operaciones[minpos]
 			tempop = maquinas[keymaquina].operaciones[0]

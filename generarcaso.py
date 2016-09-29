@@ -7,7 +7,15 @@ import sys
 import copy
 import random
 
+print "nombre caso"
+print "maxmaquinas"
+print "maxtrabajos"
+print "maxoperaciones"
+print "maxmtiempo"
+
+
 archivocaso = open(raw_input(), 'w')
+
 
 maxmaquinas = int(raw_input())
 maxtrabajos = int(raw_input())
