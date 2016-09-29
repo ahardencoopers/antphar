@@ -1,7 +1,10 @@
 from operacion import *
 from maquina import *
 from trabajo import *
+from vecino import *
 import sys
+import copy
+import random
 
 """
 Funcion leermaquinas y leertrabajos se deben llamar secuencialmente.
@@ -114,6 +117,20 @@ def getmakespan(idmaquinas, maquinas):
 		makespan = makespan + 1
 	return makespan
 
+def getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos):
+	for i in range(0, cantvecinos):
+		vecino = Vecino()
+		vecino.maquinas = copy.deepcopy(maquinas)
+		vecino.trabajos = copy.deepcopy(trabajos)
+		vecino.idtrabajos = copy.deepcopy(idtrabajos)
+		vecino.idmaquinas = copy.deepcopy(idmaquinas)
+		for j in range(0, len(idmaquinas)):
+			keymaquina = idmaquinas[j]
+			random.shuffle(vecino.maquinas[keymaquina].operaciones)
+		depgreedy(vecino.idmaquinas, vecino.maquinas)
+		#vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
+		vecinos.append(vecino)
+
 def printmaquinas(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
 		print maquinas[idmaquinas[i]].id
@@ -135,3 +152,6 @@ def printmaqop(idmaquinas, maquinas):
 			print maquinas[keymaquina].operaciones[j].id
 	return
 
+def printmakevecs(vecinos):
+	for i in range(0, len(vecinos)):
+		print vecinos[i].makespan	

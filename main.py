@@ -7,6 +7,7 @@ import sys
 import copy
 import random
 
+cantvecinos = 15
 maquinas = {}
 trabajos = {}
 #Arreglo de keys para iterar hashes de trabajos y maquinas
@@ -23,22 +24,8 @@ cargarmaquina(idtrabajos, trabajos, maquinas)
 #Aplicar heuristica greedy para orden de operaciones en cada maquina
 depgreedy(idmaquinas, maquinas)
 
-cantvecinos = 15
+getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 
-for i in range(0, cantvecinos):
-	vecino = Vecino()
-	vecino.maquinas = copy.deepcopy(maquinas)
-	vecino.trabajos = copy.deepcopy(trabajos)
-	vecino.idtrabajos = copy.deepcopy(idtrabajos)
-	vecino.idmaquinas = copy.deepcopy(idmaquinas)
-	for j in range(0, len(idmaquinas)):
-		keymaquina = idmaquinas[j]
-		random.shuffle(vecino.maquinas[keymaquina].operaciones)
-	depgreedy(vecino.idmaquinas, vecino.maquinas)
-	vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
-	vecinos.append(vecino)
-
-for i in range(0, cantvecinos):
-	vecino = vecinos[i]
+for i in range(len(vecinos)):
 	print "vecino " + str(i)
-	print vecino.makespan
+	printmaqop(vecinos[i].idmaquinas, vecinos[i].maquinas)
