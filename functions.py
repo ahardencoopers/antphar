@@ -65,7 +65,33 @@ def depgreedy(idmaquinas, maquinas):
 			tempop = maquinas[keymaquina].operaciones[0]
 			maquinas[keymaquina].operaciones[0] = minop
 			maquinas[keymaquina].operaciones[minpos] = tempop
+	return
 
+def depgreedyone(maquina):
+	if maquina.operaciones[0].dependencia > 0:
+		minpos = mindep(maquina)
+		minop = maquina.operaciones[minpos]
+		tempop = maquina.operaciones[0]
+		maquina.operaciones[0] = minop
+		maquina.operaciones[minpos] = tempop
+
+
+def opsleft(idmaquinas, maquinas):
+	cantops = 0
+	for i in range(0, len(idmaquinas)):
+		keymaquina = idmaquinas[i]
+		cantops = cantops + len(maquinas[keymaquina].operaciones)
+	return cantops
+
+def decreasedep(idmaquinas, maquinas, idtrabajo):
+	for i in range(0, len(idmaquinas)):
+		keymaquina = idmaquinas[i]
+		maquina = maquinas[keymaquina]
+		for j in range(0, len(maquina.operaciones)):
+			operacion = maquina.operaciones[j]
+			if operacion.idtrabajo == idtrabajo:
+				operacion.dependencia = operacion.dependencia - 1
+	return
 
 def printmaquinas(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
