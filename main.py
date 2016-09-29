@@ -23,6 +23,6 @@ cargarmaquina(idtrabajos, trabajos, maquinas)
 #Aplicar heuristica greedy para orden de operaciones en cada maquina
 depgreedy(idmaquinas, maquinas)
 
-getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
+printmaqop(idmaquinas, maquinas)
 
-printmakevecs(vecinos)
+print getmakespan(idmaquinas, maquinas)

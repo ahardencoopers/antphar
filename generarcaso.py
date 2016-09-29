@@ -22,8 +22,8 @@ maxtrabajos = int(raw_input())
 maxoperaciones = int(raw_input())
 maxtiempo = int(raw_input())
 
-nmaquinas = random.randrange(1, maxmaquinas+1)
-ntrabajos = random.randrange(1, maxtrabajos+1)
+nmaquinas = random.randrange(1, maxmaquinas + 1)
+ntrabajos = random.randrange(1, maxtrabajos + 1)
 
 idmaquinas = "m1"
 for i in range(2, nmaquinas):
@@ -49,6 +49,7 @@ for i in range(ntrabajos):
 		archivocaso.write(tiempo)
 		dependencia = str(j) + "\n"
 		archivocaso.write(dependencia)
-		maqrand = random.randrange(0, nmaquinas)
+		maqrand = random.randrange(0, nmaquinas-1)
+		print "maqrand " + str(maqrand)
 		maquina = maquinas[maqrand] + "\n"
 		archivocaso.write(maquina)

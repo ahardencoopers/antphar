@@ -100,6 +100,7 @@ def getmakespan(idmaquinas, maquinas):
 	makespan = 0
 	cantops = opsleft(idmaquinas, maquinas)
 	while cantops > 0:
+		print "cantops " + str(cantops)
 		for i in range(0, len(idmaquinas)):
 			keymaquina = idmaquinas[i]
 			maquina = maquinas[keymaquina]
