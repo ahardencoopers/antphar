@@ -9,6 +9,7 @@ import random
 import pdb
 
 maquinas = {}
+maquinasorden = {}
 trabajos = {}
 #Arreglo de keys para iterar hashes de trabajos y maquinas
 idtrabajos = []
@@ -21,11 +22,27 @@ leertrabajos(idtrabajos, trabajos)
 #Cargar operaciones de cada trabajo en maquinas correspondiente
 cargarmaquina(idtrabajos, trabajos, maquinas)
 
-#Aplicar heuristica greedy para orden de operaciones en cada maquina
+#Buscar minimo local
 depgreedy(idmaquinas, maquinas)
+maquinasorden = copy.deepcopy(maquinas)
+minmakespan = getmakespan(idmaquinas, maquinas)
 
-getvecinos(5, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
+getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinasorden, trabajos)
+minvecino = vecinos[0]
 
-print getmakespan(idmaquinas, maquinas)
+for i in range(0, len(vecinos)):
+	print "vecino" + str(i)
+	vecino = vecinos[i]
+	printmaqop(vecino.idmaquinas, vecino.maqorden)
 
-printmakevecs(vecinos)
+"""for i in range(0, 50):
+	print "current minspan " + str(minmakespan)
+	printmaqop(idmaquinas, maquinasorden)
+	for j in range(0, len(vecinos)):
+		if vecinos[j].makespan < minmakespan:
+			minmakespan = vecinos[j].makespan
+			minvecino = vecinos[j]
+	maquinas = copy.deepcopy(minvecino.maqorden)
+	maquinasorden = copy.deepcopy(minvecino.maqorden)
+	vecinos = []
+	getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinasorden, trabajos)"""

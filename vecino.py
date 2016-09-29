@@ -3,6 +3,10 @@ representacion de solucion circunvecina de otra solucion
 usar solo on los siguientes atributos
 
 hash maquinas
+maquinas cargadas con operaciones para calcular makespan
+
+hash maquinasorden
+maquinas cargadas con operaciones para mantener informacion de la permutacion de operaciones
 
 hash trabajos
 
