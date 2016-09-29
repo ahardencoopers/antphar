@@ -27,7 +27,4 @@ depgreedy(idmaquinas, maquinas)
 maquinasorden = copy.deepcopy(maquinas)
 minmakespan = getmakespan(idmaquinas, maquinas)
 
-print "maqop"
-printmaqop(idmaquinas, maquinasorden)
-
 getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinasorden, trabajos)
