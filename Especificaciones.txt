@@ -1,4 +1,4 @@
-Especifacion de archivo de texto con datos de maquinas, operaciones y trabajos:
+Especifacion de orden de datos de entrada de maquinas, operaciones y trabajos:
 primera linea contiene id de maquinas separado por comas
 despues de leer maquinas, la siguiente linea tendra la cantidad de trabajos ntrabajos
 para 0 hasta ntrabajos-1 leer lo siguiente

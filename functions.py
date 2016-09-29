@@ -1,7 +1,12 @@
 from operacion import *
 from maquina import *
 from trabajo import *
+import sys
 
+"""
+Funcion leermaquinas y leertrabajos se deben llamar secuencialmente.
+Leen de stdin siguiendo la especificacion de datos en el archivo Especifcaciones.txt
+"""
 def leermaquinas(idmaquinas, maquinas):
 	linea = raw_input().split(",")
 	for i in range(0, len(linea)):
@@ -32,6 +37,36 @@ def leertrabajos(idtrabajos, trabajos):
 		idtrabajos.append(trabajo.id)
 	return
 
+def mindep(maquina):
+	minop = sys.maxint
+	minpos = -1
+	for i in range(0, len(maquina.operaciones)):
+		dependencia = maquina.operaciones[i].dependencia
+		if  dependencia <= minop:
+			minop = dependencia
+			minpos = i
+	return minpos
+
+def cargarmaquina(idtrabajos, trabajos, maquinas):
+	for i in range(0, len(idtrabajos)):
+        	keytrabajo = idtrabajos[i]
+		for j in range(0, len(trabajos[keytrabajo].operaciones)):
+			operacion = trabajos[keytrabajo].operaciones[j]
+			keymaquina = trabajos[keytrabajo].operaciones[j].maquina
+			maquinas[keymaquina].operaciones.append(operacion)
+	return
+
+def depgreedy(idmaquinas, maquinas):
+	for i in range(0, len(idmaquinas)):
+		keymaquina = idmaquinas[i]
+		if maquinas[keymaquina].operaciones[0].dependencia > 0:
+			minpos = mindep(maquinas[keymaquina])
+			minop = maquinas[keymaquina].operaciones[minpos]
+			tempop = maquinas[keymaquina].operaciones[0]
+			maquinas[keymaquina].operaciones[0] = minop
+			maquinas[keymaquina].operaciones[minpos] = tempop
+
+
 def printmaquinas(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
 		print maquinas[idmaquinas[i]].id
@@ -44,3 +79,12 @@ def printtrabajos(idtrabajos, trabajos):
 		for j in range(0, len(trabajos[idtrabajos[i]].operaciones)):
 			print trabajos[idtrabajos[i]].operaciones[j].idtrabajo + " " + trabajos[idtrabajos[i]].operaciones[j].id + " " + str(trabajos[idtrabajos[i]].operaciones[j].tiempo) + " " + str(trabajos[idtrabajos[i]].operaciones[j].dependencia) + " " + str(trabajos[idtrabajos[i]].operaciones[j].maquina)
 	return
+
+def printmaqop(idmaquinas, maquinas):
+	for i in range(0, len(idmaquinas)):
+		keymaquina = idmaquinas[i]
+		print maquinas[keymaquina].id
+		for j in range(0, len(maquinas[keymaquina].operaciones)):
+			print maquinas[keymaquina].operaciones[j].id
+	return
+

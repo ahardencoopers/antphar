@@ -6,10 +6,15 @@ import sys
 
 maquinas = {}
 trabajos = {}
+#Arreglo de keys para iterar hashes de trabajos y maquinas
 idtrabajos = []
 idmaquinas = []
 
 leermaquinas(idmaquinas, maquinas)
-printmaquinas(idmaquinas, maquinas)
 leertrabajos(idtrabajos, trabajos)
-printtrabajos(idtrabajos, trabajos)
+
+cargarmaquina(idtrabajos, trabajos, maquinas)
+
+depgreedy(idmaquinas, maquinas)
+
+printmaqop(idmaquinas, maquinas)
