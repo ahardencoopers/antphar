@@ -36,6 +36,8 @@ def leertrabajos(idtrabajos, trabajos):
 			operacion.tiempo = int(round(float(raw_input())))
 			operacion.dependencia = int(raw_input())
 			operacion.maquina = raw_input()
+			operacion.empezado = 0
+			operacion.starttime = 0
 			trabajo.operaciones.append(operacion)
 		trabajos[trabajo.id] = trabajo
 		idtrabajos.append(trabajo.id)

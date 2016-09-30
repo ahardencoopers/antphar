@@ -35,7 +35,7 @@ for i in range(0, 100):
 	for j in range(0, len(vecinos)):		
 		if vecinos[j].makespan < minmakespan:
 			minferomona = random.random()
-			if minferomona > vecinos[j].feromona:
+			if minferomona < vecinos[j].feromona:
 				minmakespan = vecinos[j].makespan
 				minvecino = vecinos[j]
 				maquinas = copy.deepcopy(minvecino.maqorden)
