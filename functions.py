@@ -139,7 +139,7 @@ def getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 		depgreedy(vecino.idmaquinas, vecino.maquinas)
 		vecino.maqorden = copy.deepcopy(vecino.maquinas)
 		vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
-		vecino.feromona = 1.0/vecino.makespan
+		vecino.feromona = 1.0/(vecino.makespan + 0.00000000000000000001)
 		vecinos.append(vecino)
 
 def printmaquinas(idmaquinas, maquinas):
@@ -158,9 +158,12 @@ def printtrabajos(idtrabajos, trabajos):
 def printmaqop(idmaquinas, maquinas):
 	for i in range(0, len(idmaquinas)):
 		keymaquina = idmaquinas[i]
-		print maquinas[keymaquina].id
+		sys.stdout.write(maquinas[keymaquina].id + ": ")
+		sys.stdout.flush()
 		for j in range(0, len(maquinas[keymaquina].operaciones)):
-			print maquinas[keymaquina].operaciones[j].id
+			sys.stdout.write(maquinas[keymaquina].operaciones[j].id + " ")
+			sys.stdout.flush()
+		print
 	return
 
 def printmakevecs(vecinos):
