@@ -12,6 +12,7 @@ Funcion leermaquinas y leertrabajos se deben llamar secuencialmente.
 Leen de stdin siguiendo la especificacion de datos en el archivo Especifcaciones.txt
 """
 def leermaquinas(idmaquinas, maquinas):
+	pdb.set_trace()
 	linea = raw_input().split(",")
 	for i in range(0, len(linea)):
 		idmaquinas.append(linea[i])
@@ -33,7 +34,7 @@ def leertrabajos(idtrabajos, trabajos):
 			operacion = Operacion()
 			operacion.idtrabajo = trabajo.id
 			operacion.id = raw_input()
-			operacion.tiempo = int(raw_input())
+			operacion.tiempo = int(round(float(raw_input())))
 			operacion.dependencia = int(raw_input())
 			operacion.maquina = raw_input()
 			trabajo.operaciones.append(operacion)
@@ -93,7 +94,7 @@ def decreasedep(idmaquinas, maquinas, idtrabajo):
 		maquina = maquinas[keymaquina]
 		for j in range(0, len(maquina.operaciones)):
 			operacion = maquina.operaciones[j]
-			if operacion.idtrabajo == idtrabajo:
+			if operacion.idtrabajo == idtrabajo and operacion.dependencia > 0:
 				operacion.dependencia = operacion.dependencia - 1
 	return
 
