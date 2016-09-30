@@ -139,6 +139,7 @@ def getvecinos(cantvecinos, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 		depgreedy(vecino.idmaquinas, vecino.maquinas)
 		vecino.maqorden = copy.deepcopy(vecino.maquinas)
 		vecino.makespan = getmakespan(vecino.idmaquinas, vecino.maquinas)
+		vecino.feromona = 1.0/vecino.makespan
 		vecinos.append(vecino)
 
 def printmaquinas(idmaquinas, maquinas):

@@ -17,7 +17,10 @@ array idmaquinas
 Arreglo con llaves para iterar cada maquina
 
 int makespan
-Cantidad de tiempo para realizar todas las operaciones"""
+Cantidad de tiempo para realizar todas las operaciones
+
+double feromona
+"""
 
 class Vecino:
 	pass

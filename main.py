@@ -14,6 +14,7 @@ trabajos = {}
 idtrabajos = []
 idmaquinas = []
 vecinos = []
+feromona = 1.010
 
 leermaquinas(idmaquinas, maquinas)
 leertrabajos(idtrabajos, trabajos)
@@ -31,10 +32,12 @@ getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinascopy, trabajos)
 for i in range(0, 100):
 	for j in range(0, len(vecinos)):		
 		if vecinos[j].makespan < minmakespan:
-			print "encontre min"
-			minmakespan = vecinos[j].makespan
-			minvecino = vecinos[j]
-			maquinas = copy.deepcopy(minvecino.maqorden)
+			minferomona = random.random()
+			if minferomona > vecinos[j].feromona:
+				print "encontre min"
+				minmakespan = vecinos[j].makespan
+				minvecino = vecinos[j]
+				maquinas = copy.deepcopy(minvecino.maqorden)
 	vecinos = []
 	getvecinos(100, vecinos, idmaquinas, idtrabajos, maquinas, trabajos)
 
