@@ -161,7 +161,7 @@ def printmaqop(idmaquinas, maquinas):
 		sys.stdout.write(maquinas[keymaquina].id + ": ")
 		sys.stdout.flush()
 		for j in range(0, len(maquinas[keymaquina].operaciones)):
-			sys.stdout.write(maquinas[keymaquina].operaciones[j].id + " ")
+			sys.stdout.write("(" + maquinas[keymaquina].operaciones[j].id + "," + maquinas[keymaquina].operaciones[j].idtrabajo + ") ")
 			sys.stdout.flush()
 		print
 	return
