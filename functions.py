@@ -12,7 +12,6 @@ Funcion leermaquinas y leertrabajos se deben llamar secuencialmente.
 Leen de stdin siguiendo la especificacion de datos en el archivo Especifcaciones.txt
 """
 def leermaquinas(idmaquinas, maquinas):
-	pdb.set_trace()
 	linea = raw_input().split(",")
 	for i in range(0, len(linea)):
 		idmaquinas.append(linea[i])
